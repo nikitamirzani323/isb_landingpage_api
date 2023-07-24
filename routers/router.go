@@ -9,7 +9,6 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/nikitamirzani323/isb_landingpage_api/controllers"
-	"github.com/nikitamirzani323/isb_landingpage_api/middleware"
 )
 
 func Init() *fiber.App {
@@ -33,7 +32,7 @@ func Init() *fiber.App {
 	}))
 	app.Post("/api/init", controllers.CheckLogin)
 
-	app.Post("/api/domain", middleware.JWTProtected(), controllers.Domainhome)
+	app.Post("/api/domain", controllers.Domainhome)
 
 	return app
 }
