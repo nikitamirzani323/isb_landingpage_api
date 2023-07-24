@@ -9,7 +9,7 @@ import (
 	s "strings"
 	"time"
 
-	"github.com/nikitamirzani323/isb_landingpage_api/configs"
+	"github.com/nikitamirzani323/isb_landingpage_api/config"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -39,8 +39,8 @@ func Encryption(datatext string) (string, int) {
 	rand.Seed(time.Now().UnixNano())
 	// keymap := rand.Intn(max-min) + min
 	keymap := rand.Intn(max-min) + min
-	var key string = configs.Keymap[keymap]
-	var source string = configs.Sourcechar
+	var key string = config.Keymap[keymap]
+	var source string = config.Sourcechar
 	result := ""
 	for i := 0; i < len(datatext); i++ {
 		temp_indexsource := s.Index(source, string(datatext[i]))
@@ -52,8 +52,8 @@ func Encryption(datatext string) (string, int) {
 func Decryption(dataencrypt string) string {
 	temp := s.Split(dataencrypt, "|")
 	keymap, _ := strconv.Atoi(temp[1])
-	var key string = configs.Keymap[keymap]
-	var source string = configs.Sourcechar
+	var key string = config.Keymap[keymap]
+	var source string = config.Sourcechar
 	result := ""
 	for i := 0; i < len(temp[0]); i++ {
 		temp_indexkey := s.Index(key, string(dataencrypt[i]))
@@ -63,9 +63,11 @@ func Decryption(dataencrypt string) string {
 	return result
 }
 
-func Parsing_Decry(data, pemisah string) (string, string) {
+func Parsing_Decry(data, pemisah string) (string, string, string, int) {
 	temp_client := s.Split(data, pemisah)
 	client_username := temp_client[0]
-	client_rule := temp_client[1]
-	return client_username, client_rule
+	client_company := temp_client[1]
+	client_tipe := temp_client[2]
+	client_rule, _ := strconv.Atoi(temp_client[3])
+	return client_username, client_company, client_tipe, client_rule
 }

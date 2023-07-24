@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -34,7 +35,7 @@ func main() {
 	go func() {
 		port := os.Getenv("PORT")
 		if port == "" {
-			port = "5052"
+			port = "5051"
 		}
 
 		if err := app.Listen(":" + port); err != nil {
@@ -45,13 +46,13 @@ func main() {
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM) // When an interrupt or termination signal is sent, notify the channel
 
 	_ = <-c // This blocks the main thread until an interrupt is received
-	log.Println("Gracefully shutting down...")
+	fmt.Println("Gracefully shutting down...")
 	_ = app.Shutdown()
 
-	log.Println("Running cleanup tasks...")
+	fmt.Println("Running cleanup tasks...")
 
 	// Your cleanup tasks go here
 	// db.Close()
 	// redisConn.Close()
-	log.Println("Fiber was successful shutdown.")
+	fmt.Println("Fiber was successful shutdown.")
 }

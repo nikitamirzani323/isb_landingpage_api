@@ -80,6 +80,5 @@ func DeleteRedis(key string) int {
 		Password: dbPass,
 		DB:       dbName,
 	})
-	rdb.Close()
 	return int(rdb.Del(ctx, key).Val())
 }

@@ -1,10 +1,10 @@
 version: '2'
 
 services:
-  isb-api-landindpage:
-    container_name: isb-api-landindpage
-    image: isb-api-landindpage:0.0.0.1
+  isb-api-client-landindpage:
+    container_name: isb-api-client-landindpage
+    image: isb-api-client-landindpage:0.0.1
     build: .
     ports:
-      - 1011:1011
+      - 1102:1102
     restart: always

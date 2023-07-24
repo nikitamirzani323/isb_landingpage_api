@@ -1,11 +1,7 @@
 package entities
 
-type Login struct {
-	Username  string `json:"username" validate:"required"`
-	Password  string `json:"password" validate:"required"`
-	Ipaddress string `json:"ipaddress" validate:"required"`
-	Timezone  string `json:"timezone" validate:"required"`
-}
-type Home struct {
-	Page string `json:"page"`
+type Loginmobile struct {
+	Username string `json:"username" form:"username" validate:"required"`
+	Name     string `json:"nama" form:"nama" validate:"required"`
+	Device   string `json:"typedevice" form:"typedevice" validate:"required"`
 }

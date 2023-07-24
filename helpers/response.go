@@ -6,7 +6,7 @@ type Response struct {
 	Record  interface{} `json:"record"`
 	Time    string      `json:"time"`
 }
-type Responsepaging struct {
+type ResponsePaging struct {
 	Status      int         `json:"status"`
 	Message     string      `json:"message"`
 	Record      interface{} `json:"record"`
@@ -14,27 +14,18 @@ type Responsepaging struct {
 	Totalrecord int         `json:"totalrecord"`
 	Time        string      `json:"time"`
 }
-type Responsemovie struct {
-	Status      int         `json:"status"`
-	Message     string      `json:"message"`
-	Record      interface{} `json:"record"`
-	Perpage     int         `json:"perpage"`
-	Totalrecord int         `json:"totalrecord"`
-	Time        string      `json:"time"`
+type ResponseDomain struct {
+	Status  int    `json:"status"`
+	Message string `json:"message"`
+	Domain  string `json:"domain"`
 }
+
 type ResponseAdmin struct {
 	Status   int         `json:"status"`
 	Message  string      `json:"message"`
 	Record   interface{} `json:"record"`
 	Listrule interface{} `json:"listruleadmin"`
 	Time     string      `json:"time"`
-}
-type ResponseEmployee struct {
-	Status          int         `json:"status"`
-	Message         string      `json:"message"`
-	Record          interface{} `json:"record"`
-	Listdepartement interface{} `json:"listdepartement"`
-	Time            string      `json:"time"`
 }
 type ErrorResponse struct {
 	Field string
